@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "seep-detection"
+version = "0.1.0"
+description = ""
+authors = ["nikhil-chigali <nikhil.chigali@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^2.1.1"
+matplotlib = "^3.9.2"
+opencv-python = "^4.10.0.84"
+seaborn = "^0.13.2"
+pillow = "^10.4.0"
+torch = {version = "^2.4.1+cu121", source = "torchwheels"}
+torchvision = {version = "^0.19.1+cu121", source = "torchwheels"}
+scikit-learn = "^1.5.2"
+loguru = "^0.7.2"
+tqdm = "^4.66.5"
+ultralytics = "^8.3.4"
+ml-collections = "^0.1.1"
+
+
+[[tool.poetry.source]]
+name = "torchwheels"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
