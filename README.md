@@ -1,8 +1,8 @@
 # SEEP Detection - Image Segmentation Task
 ## Project Overview
-This project is aimed at developing and evaluating a deep convolutional neural network (DCNN) model for the task of detecting and segmenting oil seeps in synthetic aperture radar (SAR) images. The dataset consists of SAR images where each pixel is classified as either a non-seep or as one of seven seep classes.
+This project aims to develop and evaluate a deep convolutional neural network (DCNN) model for detecting and segmenting oil seeps in synthetic aperture radar (SAR) images. The dataset consists of SAR images, where each pixel is classified as either a non-seep or one of seven seep classes.
 
-The primary objective is to segment the regions that contain seeps, with an optional task to further classify these seeps into specific categories.
+The primary objective is to segment the regions that contain seeps, with an optional task to classify these seeps into specific categories further.
 
 ## Data
 The data consists of SAR images with corresponding masks. Each image is 256 x 256 pixels and is provided in `.tif` format. The images are located in two directories:
@@ -38,26 +38,30 @@ The classes have been re-structured as follows skipping the `No Seep` class
 ## Training Results
 > **Observation**: The model Segments and classifies `Seep cls1` well due to an abundance of its examples in the dataset. However, it performs poorly on other classes. This could be improved by weighting the loss function for less frequent classes.
 ### Confusion matrix across classes
-![Confusion matrix](runs\segment\train\confusion_matrix_normalized.png)
+![Confusion matrix](https://github.com/nikhil-chigali/seep_detection/blob/main/runs/segment/train/confusion_matrix_normalized.png)
+
 Poor performance across all the classes except for `Seep cls1`. 
 
 ### Number of instances of each class
-![Num instances](runs\segment\train\num_instances.png)
+![Num instances](https://github.com/nikhil-chigali/seep_detection/blob/main/runs/segment/train/num_instances.png)
+
 Skew in class distribution of the dataset
 
 ### Precision recall curve
-![PRcurve](runs\segment\train\MaskPR_curve.png)
+![PRcurve](https://github.com/nikhil-chigali/seep_detection/blob/main/runs/segment/train/MaskPR_curve.png)
+
 Poor PR curve - less area under the PR curve for every class, which mean the mAP is poor for each class.
 
 ### Training
-![training](runs\segment\train\results.png)
+![training](https://github.com/nikhil-chigali/seep_detection/blob/main/runs/segment/train/results.png)
+
 - Steady decrease in Training and Val losses
 - Mean Average Precision (mAP-M) for masks is steadily increasing until it performs well on `Seep cls1` then it seizes to improve. 
 - Augmenting the data with more examples from `Seep cls2 - Seep cls7` can help the performance of the model on rest of the classes.
 
 ### Some prediction results
 #### Labels
-![labels](runs\segment\train\val_batch0_labels.jpg)
+![labels](https://github.com/nikhil-chigali/seep_detection/blob/main/runs/segment/train/val_batch0_labels.jpg)
 
 #### Predictions
-![preds](runs\segment\train\val_batch0_pred.jpg)
+![preds](https://github.com/nikhil-chigali/seep_detection/blob/main/runs/segment/train/val_batch0_pred.jpg)
